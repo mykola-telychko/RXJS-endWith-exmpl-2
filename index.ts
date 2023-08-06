@@ -1,11 +1,13 @@
 import { endWith } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+// src: https://www.learnrxjs.io/learn-rxjs/operators/combination/endwith
+
 const source$ = of('Hello', 'Friend');
 
 source$
-  // emit on completion
+  .pipe()
+  .pipe(endWith('Bye'))
   .pipe(endWith('-------', 'END'))
-  .pipe(endWith('Goodbye', 'Friend'))
-  // 'Hello', 'Friend', 'Goodbye', 'Friend'
-  .subscribe((val) => console.log(val));
+  .pipe(endWith('-------', 'FIN'))
+  .subscribe((val) => console.log('el  :', val));
